@@ -21,6 +21,9 @@ export default function Navigation() {
 
   const toggleTheme = () => {
     const html = document.documentElement
+    // Disable transitions
+    html.classList.add('no-transition')
+
     if (html.classList.contains('dark')) {
       html.classList.remove('dark')
       localStorage.setItem('theme', 'light')
@@ -30,6 +33,11 @@ export default function Navigation() {
       localStorage.setItem('theme', 'dark')
       setIsDark(true)
     }
+
+    // Re-enable transitions after a frame
+    setTimeout(() => {
+      html.classList.remove('no-transition')
+    }, 0)
   }
 
   const handleLogout = () => {

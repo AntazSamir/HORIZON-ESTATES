@@ -10,9 +10,11 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #0D9488; /* Preserved from existing, takes precedence */
+  --primary: #0D9488;
+  /* Preserved from existing, takes precedence */
   --primary-foreground: oklch(0.985 0 0);
-  --primary-light: #2DD4BF; /* Preserved from existing */
+  --primary-light: #2DD4BF;
+  /* Preserved from existing */
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -37,7 +39,27 @@
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100;
+  }
+}
+
+.no-transition * {
+  transition: none !important;
 }
 
 .dark {
@@ -157,9 +179,17 @@
   }
 
   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
   }
 
   .animate-float {
