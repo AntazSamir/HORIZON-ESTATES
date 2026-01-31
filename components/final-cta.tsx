@@ -1,12 +1,33 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
 export default function FinalCTA() {
+  const router = useRouter()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const auth = localStorage.getItem('isLoggedIn')
+    setIsLoggedIn(auth === 'true')
+  }, [])
+
+  const handleStartJourney = () => {
+    if (isLoggedIn) {
+      router.push('/properties')
+    } else {
+      router.push('/login')
+    }
+  }
+
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-teal-900 -z-20"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-teal-900"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
 
-      <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h2 className="font-display text-5xl lg:text-7xl font-extrabold text-white mb-8">
           Ready to find your <span className="text-teal-300">forever home?</span>
         </h2>
@@ -16,10 +37,16 @@ export default function FinalCTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <button className="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all active:scale-95 shadow-2xl shadow-teal-500/30">
+          <button
+            onClick={handleStartJourney}
+            className="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all active:scale-95 shadow-2xl shadow-teal-500/30"
+          >
             Start Your Journey
           </button>
-          <button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all border border-white/20">
+          <button
+            onClick={() => router.push('/contact')}
+            className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all border border-white/20"
+          >
             Talk to an Agent
           </button>
         </div>
