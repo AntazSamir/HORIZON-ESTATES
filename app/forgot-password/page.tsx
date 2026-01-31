@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
+import { CubeLoader } from '@/components/ui/cube-loader'
 
 export default function ForgotPasswordPage() {
     const [mounted, setMounted] = useState(false)
@@ -104,7 +105,9 @@ export default function ForgotPasswordPage() {
                                             >
                                                 {isLoading ? (
                                                     <>
-                                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white dark:border-slate-900/10 dark:border-t-slate-900 rounded-full animate-spin"></div>
+                                                        <div className="w-6 h-6 flex items-center justify-center mr-2">
+                                                            <CubeLoader className="text-teal-500" style={{ transform: 'scale(0.4)' }} />
+                                                        </div>
                                                         Sending Encrypted Key...
                                                     </>
                                                 ) : (

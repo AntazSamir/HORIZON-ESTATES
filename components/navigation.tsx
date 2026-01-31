@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 export default function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -246,15 +247,7 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-1 sm:gap-2">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
-                aria-label="Toggle theme"
-              >
-                <span className="material-symbols-outlined text-2xl">
-                  {isDark ? 'light_mode' : 'dark_mode'}
-                </span>
-              </button>
+              <ThemeToggle isDark={isDark} toggle={toggleTheme} />
 
               {/* Mobile Menu Toggle */}
               <button
