@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 
@@ -35,10 +36,12 @@ export default function RentPage() {
             {rentalProperties.map((property) => (
               <div key={property.id} className="group glass rounded-2xl overflow-hidden hover:shadow-xl transition-all">
                 <div className="relative overflow-hidden h-64">
-                  <img
+                  <Image
                     src={property.image}
                     alt={property.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   {property.featured && (
                     <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">

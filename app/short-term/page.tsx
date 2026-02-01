@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 
@@ -35,10 +36,12 @@ export default function ShortTermPage() {
                         {shortTermProperties.map((property) => (
                             <div key={property.id} className="group glass rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-500 border border-white/20 dark:border-white/5">
                                 <div className="relative overflow-hidden h-72">
-                                    <img
+                                    <Image
                                         src={property.image}
                                         alt={property.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60"></div>
 

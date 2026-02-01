@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 
@@ -206,10 +207,12 @@ export default function PropertiesPage() {
             {filteredProperties.filter(p => !p.forRent).map((property) => (
               <div key={property.id} className="group glass rounded-2xl overflow-hidden hover:shadow-xl transition-all border border-slate-200 dark:border-slate-800">
                 <div className="relative overflow-hidden h-64">
-                  <img
+                  <Image
                     src={property.image || "/placeholder.svg"}
                     alt={property.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 flex gap-2">
                     {property.featured && (
