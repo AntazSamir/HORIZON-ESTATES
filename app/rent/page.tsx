@@ -6,7 +6,7 @@ import FinancialCalculator from '@/components/financial-calculator'
 import { properties } from '@/lib/properties'
 
 export default function RentPage() {
-  const rentalProperties = properties.filter(p => p.forRent)
+  const rentalProperties = properties.filter(p => p.forRent && p.rentalType === 'long')
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -15,11 +15,15 @@ export default function RentPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 px-4 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-display text-5xl font-bold mt-4 mb-6">
-            Find Your Perfect <span className="text-teal-500">Rental</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm font-medium mb-4">
+            <span className="material-symbols-outlined text-lg">key</span>
+            Long Term Leasing
+          </div>
+          <h1 className="font-display text-5xl font-bold mb-6">
+            Find Your Next <span className="text-teal-500">Home</span>
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Thousands of rental properties at your fingertips. From cozy studios to luxury villas.
+            Browse our selection of premium long-term rental properties. Flexible lease terms and move-in ready homes waiting for you.
           </p>
         </div>
       </section>

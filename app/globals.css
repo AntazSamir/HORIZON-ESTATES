@@ -39,9 +39,9 @@
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+
   --sidebar-ring: oklch(0.708 0 0);
-  scroll-behavior: smooth;
+
 }
 
 @layer base {
@@ -50,7 +50,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+
   }
 
   body {
@@ -97,7 +97,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+@theme {
   --font-display: var(--font-display);
   --font-serif: var(--font-serif);
   --font-sans: 'Inter', 'Inter Fallback';
@@ -145,7 +145,7 @@
   }
 
   body {
-    @apply scroll-smooth bg-background text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 

@@ -3,71 +3,42 @@
 import React from 'react'
 
 interface ThemeToggleProps {
-    isDark: boolean
-    toggle: () => void
+  isDark?: boolean
+  toggle: () => void
 }
 
 export function ThemeToggle({ isDark, toggle }: ThemeToggleProps) {
-    return (
-        <div className="flex items-center">
-            <input
-                type="checkbox"
-                className="theme-checkbox"
-                checked={isDark}
-                onChange={toggle}
-                aria-label="Toggle theme"
-            />
-            <style jsx>{`
-        .theme-checkbox {
-          --toggle-size: 10px; /* Scaled down from 16px to fit nav better */
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          width: 6.25em;
-          height: 3.125em;
-          background: -webkit-gradient(linear, left top, right top, color-stop(50%, #f1f5f9), color-stop(50%, #0d9488)) no-repeat;
-          background: -o-linear-gradient(left, #f1f5f9 50%, #0d9488 50%) no-repeat;
-          background: linear-gradient(to right, #f1f5f9 50%, #0d9488 50%) no-repeat;
-          background-size: 205%;
-          background-position: 0;
-          -webkit-transition: 0.4s;
-          -o-transition: 0.4s;
-          transition: 0.4s;
-          border-radius: 99em;
-          position: relative;
-          cursor: pointer;
-          font-size: var(--toggle-size);
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+  return (
+    <button
+      onClick={toggle}
+      className="group relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-teal-500/50 dark:hover:border-teal-500/50 transition-all duration-300 active:scale-95"
+      aria-label="Toggle theme"
+    >
+      <div className={`absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
-        .theme-checkbox::before {
-          content: "";
-          width: 2.25em;
-          height: 2.25em;
-          position: absolute;
-          top: 0.438em;
-          left: 0.438em;
-          background: -webkit-gradient(linear, left top, right top, color-stop(50%, #f1f5f9), color-stop(50%, #0d9488)) no-repeat;
-          background: -o-linear-gradient(left, #f1f5f9 50%, #0d9488 50%) no-repeat;
-          background: linear-gradient(to right, #f1f5f9 50%, #0d9488 50%) no-repeat;
-          background-size: 205%;
-          background-position: 100%;
-          border-radius: 50%;
-          -webkit-transition: 0.4s;
-          -o-transition: 0.4s;
-          transition: 0.4s;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
+      <div className="relative h-5 w-5">
+        {/* Sun Icon */}
+        <svg
+          className={`absolute inset-0 text-amber-500 transition-all duration-500 ease-in-out ${isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
 
-        .theme-checkbox:checked::before {
-          left: calc(100% - 2.25em - 0.438em);
-          background-position: 0;
-        }
-
-        .theme-checkbox:checked {
-          background-position: 100%;
-        }
-      `}</style>
-        </div>
-    )
+        {/* Moon Icon */}
+        <svg
+          className={`absolute inset-0 text-indigo-400 transition-all duration-500 ease-in-out ${isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </div>
+    </button>
+  )
 }

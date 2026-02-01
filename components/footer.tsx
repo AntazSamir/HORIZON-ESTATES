@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Footer() {
   return (
     <footer className="pt-24 pb-12 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
@@ -14,27 +16,27 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm mb-4 uppercase">Explore</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/properties" className="text-slate-500 hover:text-teal-500 transition-colors">Properties</a></li>
-              <li><a href="/rent" className="text-slate-500 hover:text-teal-500 transition-colors">Rent</a></li>
-              <li><a href="/sell" className="text-slate-500 hover:text-teal-500 transition-colors">Sell</a></li>
+              <li><Link href="/properties" className="text-slate-500 hover:text-teal-500 transition-colors">Properties</Link></li>
+              <li><Link href="/rent" className="text-slate-500 hover:text-teal-500 transition-colors">Rent</Link></li>
+              <li><Link href="/sell" className="text-slate-500 hover:text-teal-500 transition-colors">Sell</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-sm mb-4 uppercase">Learn</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/about" className="text-slate-500 hover:text-teal-500 transition-colors">About</a></li>
-              <li><a href="/blog" className="text-slate-500 hover:text-teal-500 transition-colors">Blog</a></li>
-              <li><a href="/faq" className="text-slate-500 hover:text-teal-500 transition-colors">FAQ</a></li>
+              <li><Link href="/about" className="text-slate-500 hover:text-teal-500 transition-colors">About</Link></li>
+              <li><Link href="/blog" className="text-slate-500 hover:text-teal-500 transition-colors">Blog</Link></li>
+              <li><Link href="/faq" className="text-slate-500 hover:text-teal-500 transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-sm mb-4 uppercase">Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/contact" className="text-slate-500 hover:text-teal-500 transition-colors">Contact</a></li>
-              <li><a href="/privacy" className="text-slate-500 hover:text-teal-500 transition-colors">Privacy</a></li>
-              <li><a href="/terms" className="text-slate-500 hover:text-teal-500 transition-colors">Terms</a></li>
+              <li><Link href="/contact" className="text-slate-500 hover:text-teal-500 transition-colors">Contact</Link></li>
+              <li><Link href="/privacy" className="text-slate-500 hover:text-teal-500 transition-colors">Privacy</Link></li>
+              <li><Link href="/terms" className="text-slate-500 hover:text-teal-500 transition-colors">Terms</Link></li>
             </ul>
           </div>
         </div>

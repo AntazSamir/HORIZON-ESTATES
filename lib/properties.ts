@@ -12,6 +12,7 @@ export interface Property {
     description: string;
     amenities: string[];
     forRent?: boolean;
+    rentalType?: 'long' | 'short';
 }
 
 export const properties: Property[] = [
@@ -118,13 +119,14 @@ export const properties: Property[] = [
         featured: false,
         description: 'Charming 2-bedroom apartment with plenty of natural light. Centrally located with easy access to public transport and local cafes.',
         amenities: ['Hardwood Floors', 'Updated Kitchen', 'Balcony', 'Secure Entry'],
-        forRent: true
+        forRent: true,
+        rentalType: 'long'
     },
     {
         id: 8,
         title: 'Modern Luxury Condo',
         location: 'Miami, FL',
-        price: '$4,500/month',
+        price: '$350/night',
         beds: 3,
         baths: 2,
         sqft: 1800,
@@ -133,7 +135,8 @@ export const properties: Property[] = [
         featured: true,
         description: 'Stunning luxury condo with panoramic ocean views. Experience the best of Miami living with top-tier building amenities and modern interiors.',
         amenities: ['Pool', 'Gym', 'Valet Parking', 'Concierge'],
-        forRent: true
+        forRent: true,
+        rentalType: 'short'
     },
     {
         id: 9,
@@ -148,6 +151,23 @@ export const properties: Property[] = [
         featured: false,
         description: 'Beautifully restored Victorian home in a historic neighborhood. Combining classic charm with modern conveniences.',
         amenities: ['Garden', 'Fireplace', 'Bay Windows', 'Detached Garage'],
-        forRent: true
+        forRent: true,
+        rentalType: 'long'
+    },
+    {
+        id: 10,
+        title: 'High-Tech Loft',
+        location: 'Tokyo, Japan',
+        price: '$250/night',
+        beds: 1,
+        baths: 1,
+        sqft: 800,
+        image: 'https://images.unsplash.com/photo-1502005229766-31dbce44371c?w=800&h=600&fit=crop',
+        type: 'apartment',
+        featured: true,
+        description: 'Stay in the heart of Shibuya in this futuristic loft. Features voice-controlled systems, projector, and minimal aesthetic.',
+        amenities: ['Smart Home', 'Projector', 'Heated Floors', 'Keyless Entry'],
+        forRent: true,
+        rentalType: 'short'
     }
 ];

@@ -2,43 +2,25 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useTheme } from "next-themes"
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 export default function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const isDark = mounted && resolvedTheme === 'dark'
 
-  // Sync login and theme state
   useEffect(() => {
+    setMounted(true)
     const auth = localStorage.getItem('isLoggedIn')
     setIsLoggedIn(auth === 'true')
-
-    // Check if dark mode is enabled
-    const darkMode = document.documentElement.classList.contains('dark')
-    setIsDark(darkMode)
   }, [])
 
   const toggleTheme = () => {
-    const html = document.documentElement
-    // Disable transitions
-    html.classList.add('no-transition')
-
-    if (html.classList.contains('dark')) {
-      html.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-      setIsDark(false)
-    } else {
-      html.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-      setIsDark(true)
-    }
-
-    // Re-enable transitions after a frame
-    setTimeout(() => {
-      html.classList.remove('no-transition')
-    }, 0)
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   }
 
   const handleLogout = () => {
@@ -63,7 +45,7 @@ export default function Navigation() {
     ],
     rent: [
       { title: 'Rentals', description: 'Find your perfect rental', href: '/rent', icon: 'key' },
-      { title: 'Short Term', description: 'Villas and apartments', href: '/rent', icon: 'calendar_month' },
+      { title: 'Short Term', description: 'Villas and apartments', href: '/short-term', icon: 'calendar_month' },
     ],
     sell: [
       { title: 'Sell with Us', description: 'Get the best market price', href: '/sell', icon: 'sell' },
@@ -238,9 +220,6 @@ export default function Navigation() {
                 <>
                   <Link href="/login" className="text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
                     Log in
-                  </Link>
-                  <Link href="/signup" className="bg-teal-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-teal-500/20 hover:bg-teal-600 hover:shadow-teal-500/40 transition-all active:scale-95">
-                    Get Started
                   </Link>
                 </>
               )}
